@@ -1,0 +1,216 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary-color-start: #667eea;
+    --primary-color-end: #764ba2;
+    --background-gradient: linear-gradient(135deg, var(--primary-color-start) 0%, var(--primary-color-end) 100%);
+    --card-bg: #ffffff;
+    --text-dark: #343a40;
+    --text-light: #f8f9fa;
+    --text-muted: #6c757d;
+    --border-color: #dee2e6;
+    --shadow-color: rgba(0, 0, 0, 0.15);
+    --success-color: #28a745;
+    --error-color: #dc3545;
+    --button-secondary-bg: #6c757d;
+    --button-secondary-hover-bg: #5a6268;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--background-gradient);
+    color: var(--text-dark);
+    padding: 20px;
+}
+
+.game-container {
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    max-width: 550px;
+    width: 100%;
+    overflow: hidden; 
+}
+
+.game-container h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 18px 25px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--primary-color-end);
+}
+
+.game-container .content {
+    padding: 25px 30px;
+}
+
+.content .scrambled-word {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 5px; /* Space out letters */
+    text-align: center;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    user-select: none;
+}
+
+.content .details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.details p {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.details p span {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.details .time b {
+    color: var(--primary-color-end);
+    font-weight: 600;
+}
+
+.content input {
+    width: 100%;
+    height: 55px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0 18px;
+    font-size: 1rem;
+    outline: none;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+}
+
+.content input:focus {
+    border-color: var(--primary-color-start);
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2); /* Focus ring */
+}
+
+.content input::placeholder {
+    color: #adb5bd;
+}
+
+.content input.correct {
+    border-color: var(--success-color);
+}
+.content input.incorrect {
+    border-color: var(--error-color);
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+}
+
+
+.content .buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.buttons button {
+    flex-grow: 1;
+    padding: 12px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.buttons button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.buttons .refresh-word {
+    background: var(--button-secondary-bg);
+}
+
+.buttons .refresh-word:hover {
+    background: var(--button-secondary-hover-bg);
+    transform: translateY(-2px);
+}
+
+.buttons .check-word {
+     background: var(--background-gradient);
+}
+
+.buttons .check-word:hover {
+    opacity: 0.9;
+    box-shadow: 0 6px 20px rgba(118, 75, 162, 0.4);
+     transform: translateY(-2px);
+}
+
+.content .message {
+    text-align: center;
+    font-size: 0.9rem;
+    min-height: 1.2em; /* Prevent layout shift */
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+.message.success {
+    color: var(--success-color);
+}
+
+.message.error {
+    color: var(--error-color);
+}
+
+
+@media (max-width: 500px) {
+    .game-container {
+        max-width: 95%;
+    }
+    .game-container h2 {
+        font-size: 1.4rem;
+        padding: 15px 20px;
+    }
+     .game-container .content {
+        padding: 20px 25px;
+    }
+    .content .scrambled-word {
+        font-size: 1.8rem;
+        letter-spacing: 3px;
+        margin-bottom: 20px;
+    }
+    .details p {
+        font-size: 0.9rem;
+    }
+    .content input {
+        height: 50px;
+        font-size: 0.9rem;
+    }
+    .buttons button {
+        padding: 10px 0;
+        font-size: 0.9rem;
+    }
+     .content .message {
+        font-size: 0.85rem;
+    }
+}
